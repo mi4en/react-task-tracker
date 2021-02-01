@@ -76,23 +76,34 @@ function App() {
 
 		const data = await res.json();
 
-		setTasks(tasks.map((task) => (task.id === id ? { ...task, reminder: data.reminder } : task)));
+		setTasks(
+			tasks.map((task) =>
+				task.id === id ? { ...task, reminder: data.reminder } : task,
+			),
+		);
 	};
 
 	return (
 		<Router>
-			<div className="container">
-				<Header onAdd={() => setShowAddTask(!showAddTask)} showAdd={showAddTask} />
+			<div className='container'>
+				<Header
+					onAdd={() => setShowAddTask(!showAddTask)}
+					showAdd={showAddTask}
+				/>
 
 				<Route
-					path="/"
+					path='/'
 					exact
 					render={(props) => (
 						<>
 							{showAddTask && <AddTask onAdd={addTask} />}
 
 							{tasks.length > 0 ? (
-								<Tasks tasks={tasks} onDelete={deleteTask} onToggle={toggleReminder} />
+								<Tasks
+									tasks={tasks}
+									onDelete={deleteTask}
+									onToggle={toggleReminder}
+								/>
 							) : (
 								'There are no active tasks:)'
 							)}
@@ -100,7 +111,7 @@ function App() {
 					)}
 				/>
 
-				<Route path="/about" component={About} />
+				<Route path='/about' component={About} />
 
 				<Footer />
 			</div>
