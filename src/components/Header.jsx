@@ -6,10 +6,14 @@ const Header = ({ title, onAdd, showAdd }) => {
 	const location = useLocation();
 
 	return (
-		<header className="header">
+		<header className='header'>
 			<h1>{title}</h1>
 			{location.pathname === '/' && (
-				<Button onClick={onAdd} bgColor={showAdd ? 'blue' : 'green'} label={showAdd ? 'Close' : 'Add'} />
+				<Button
+					onClick={onAdd}
+					bgColor={showAdd ? 'blue' : 'green'}
+					label={showAdd ? 'Close' : 'Add'}
+				/>
 			)}
 		</header>
 	);
